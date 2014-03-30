@@ -1,0 +1,46 @@
+{
+  "name": "fullname-native",
+  "version": "0.0.0",
+  "description": "Get the fullname of the current user",
+  "license": "MIT",
+  "repository": "sindresorhus/fullname-native",
+  "bin": {
+    "fullname": "cli.js"
+  },
+  "author": {
+    "name": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "http://sindresorhus.com"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "gypfile": true,
+  "scripts": {
+    "test": "mocha"
+  },
+  "files": [
+    "index.js",
+    "cli.js",
+    "binding.gyp",
+    "binding.cc"
+  ],
+  "keywords": [
+    "binding",
+    "native",
+    "addon",
+    "name",
+    "fullname",
+    "realname",
+    "user",
+    "gecos",
+    "pwuid",
+    "uid"
+  ],
+  "dependencies": {
+    "nan": "^0.8.0"
+  },
+  "devDependencies": {
+    "mocha": "*"
+  }
+}
