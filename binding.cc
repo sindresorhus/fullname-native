@@ -21,7 +21,7 @@ NAN_METHOD(name) {
 	TCHAR username[UNLEN+1];
 	ULONG size = sizeof(username);
 
-	if (GetUserNameEx(NameDisplay, username, &size) != 0 && sizeof(username) > 0) {
+	if (GetUserNameEx(NameDisplay, username, &size) != 0) {
 		NanReturnValue(String::New((uint16_t*)username, wcslen(username)));
 	}
 

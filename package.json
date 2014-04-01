@@ -26,6 +26,9 @@
     "binding.cc"
   ],
   "keywords": [
+    "cli",
+    "bin",
+    "app",
     "binding",
     "native",
     "addon",
