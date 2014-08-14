@@ -1,6 +1,6 @@
 'use strict';
 var assert = require('assert');
-var fullname = require('./index');
+var fullname = require('./');
 
 it('should return the fullname of the current user', function () {
 	console.log('Name:', fullname);
