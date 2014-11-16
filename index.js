@@ -1,1 +1,1 @@
-module.exports = require('./build/Release/binding')();
+module.exports = require('bindings')('binding')();
