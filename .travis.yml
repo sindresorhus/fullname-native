@@ -1,6 +1,8 @@
 sudo: false
 language: objective-c
-install: brew install node
+install:
+  - brew tap smockle/homebrew-iojs
+  - brew install iojs --force
 script:
   - npm install
   - npm test
