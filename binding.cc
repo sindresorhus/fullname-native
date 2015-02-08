@@ -3,7 +3,7 @@
 #include <string>
 
 #include <node.h>
-#include "nan.h"
+#include <nan.h>
 
 using namespace v8;
 
@@ -22,7 +22,7 @@ NAN_METHOD(name) {
 	ULONG size = sizeof(username);
 
 	if (GetUserNameEx(NameDisplay, username, &size) != 0) {
-		NanReturnValue(String::New((uint16_t*)username, wcslen(username)));
+		NanReturnValue(NanNew<String>((uint16_t*)username, wcslen(username)));
 	}
 
 	NanReturnNull();
@@ -44,7 +44,7 @@ NAN_METHOD(name) {
 		std::string name = gecos.substr(0, gecos.find(",", 0));
 
 		if (name.length() > 0) {
-			NanReturnValue(String::New(gecos.c_str()));
+			NanReturnValue(NanNew<String>(gecos.c_str()));
 		}
 	}
 
