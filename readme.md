@@ -11,7 +11,7 @@ $ npm install --save fullname-native
 
 **This is a [native binding](http://nodejs.org/api/addons.html) and expects you to have the required [toolchain](https://github.com/TooTallNate/node-gyp#installation).** *(ignore the node-gyp install)*
 
-Tested to work on OS X and Windows.
+Tested to work on OS X, Linux and Windows.
 
 
 ## Usage
