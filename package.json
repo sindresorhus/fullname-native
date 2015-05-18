@@ -7,7 +7,7 @@
   "author": {
     "name": "Sindre Sorhus",
     "email": "sindresorhus@gmail.com",
-    "url": "http://sindresorhus.com"
+    "url": "sindresorhus.com"
   },
   "bin": {
     "fullname": "cli.js"
@@ -26,6 +26,7 @@
     "binding.cc"
   ],
   "keywords": [
+    "cli-app",
     "cli",
     "bin",
     "app",
