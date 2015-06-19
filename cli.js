@@ -8,7 +8,7 @@ meow({
 		'Example',
 		'  fullname',
 		'  Sindre Sorhus'
-	].join('\n')
+	]
 });
 
 console.log(fullname);
