@@ -5,7 +5,7 @@
 
 ## Install
 
-```sh
+```
 $ npm install --save fullname-native
 ```
 
@@ -17,24 +17,24 @@ Tested to work on OS X, Linux and Windows.
 ## Usage
 
 ```js
-var fullname = require('fullname-native');
+const fullname = require('fullname-native');
 
 console.log(fullname);
-//=> Sindre Sorhus
+//=> 'Sindre Sorhus'
 ```
 
 
 ## CLI
 
-```sh
+```
 $ npm install --global fullname-native
 ```
 
-```sh
+```
 $ fullname --help
 
   Example
-    fullname
+    $ fullname
     Sindre Sorhus
 ```
 
