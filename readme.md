@@ -24,6 +24,11 @@ console.log(fullname);
 ```
 
 
+## Related
+
+- [fullname](https://github.com/sindresorhus/fullname) - Non-native version of this module
+
+
 ## License
 
 MIT © [Sindre Sorhus](http://sindresorhus.com)

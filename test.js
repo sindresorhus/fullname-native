@@ -1,9 +1,9 @@
-'use strict';
-var assert = require('assert');
-var fullname = require('./');
+import test from 'ava';
+import x from './';
 
-it('should return the fullname of the current user', function () {
-	console.log('Name:', fullname);
-	assert.ok(typeof fullname === 'string');
-	assert.ok(fullname.length > 0);
+test(t => {
+	console.log('Fullname:', x);
+	t.is(typeof x, 'string');
+	t.true(x.length > 0);
+	t.end();
 });
