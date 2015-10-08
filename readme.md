@@ -26,7 +26,9 @@ console.log(fullname);
 
 ## Related
 
+- [fullname-cli](https://github.com/sindresorhus/fullname-cli) - CLI for this module
 - [fullname](https://github.com/sindresorhus/fullname) - Non-native version of this module
+- [username](https://github.com/sindresorhus/username) - Get the username of the current user
 
 
 ## License

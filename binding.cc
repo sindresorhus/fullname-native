@@ -16,44 +16,45 @@ using namespace v8;
 #include <lmcons.h>
 #include <tchar.h>
 NAN_METHOD(name) {
-	NanScope();
+	Nan::HandleScope scope;
 
 	TCHAR username[UNLEN+1];
 	ULONG size = sizeof(username);
 
 	if (GetUserNameEx(NameDisplay, username, &size) != 0) {
-		NanReturnValue(NanNew<String>((uint16_t*)username, wcslen(username)));
+		info.GetReturnValue().Set(Nan::New<String>((uint16_t*)username).ToLocalChecked());
+	} else {
+		info.GetReturnValue().Set(Nan::Null());
 	}
-
-	NanReturnNull();
 }
 #else
 #include <sys/types.h>
 #include <unistd.h>
 #include <pwd.h>
 NAN_METHOD(name) {
-	NanScope();
+	Nan::HandleScope scope;
 
 	struct passwd *pw = getpwuid(getuid());
 
 	if (pw != NULL && pw->pw_gecos != NULL && strlen(pw->pw_gecos) > 0) {
-		std::string gecos(pw->pw_gecos);
+		const std::string gecos(pw->pw_gecos);
 
 		// get everything before the first comma
 		// since `gecos` is defined as a comma seperated list
-		std::string name = gecos.substr(0, gecos.find(",", 0));
+		const std::string name = gecos.substr(0, gecos.find(",", 0));
 
 		if (name.length() > 0) {
-			NanReturnValue(NanNew<String>(gecos.c_str()));
+			info.GetReturnValue().Set(Nan::New<String>(name).ToLocalChecked());
+			return;
 		}
 	}
 
-	NanReturnNull();
+	info.GetReturnValue().Set(Nan::Null());
 }
 #endif
 
 void init(Handle<Object> exports, Handle<Object> module) {
-	NODE_SET_METHOD(module, "exports", name);
+	Nan::SetMethod(module, "exports", name);
 }
 
 NODE_MODULE(binding, init)
