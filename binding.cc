@@ -2,38 +2,37 @@
 #include <iostream>
 #include <string>
 
+#ifdef _WIN32
+#	define SECURITY_WIN32
+#	include <windows.h>
+#	include <security.h>
+#	include <secext.h>
+#	include <lmcons.h>
+#	include <tchar.h>
+#else
+#	include <sys/types.h>
+#	include <unistd.h>
+#	include <pwd.h>
+#endif
+
 #include <node.h>
 #include <nan.h>
 
 using namespace v8;
 
 
-#ifdef _WIN32
-#define SECURITY_WIN32
-#include <windows.h>
-#include <security.h>
-#include <secext.h>
-#include <lmcons.h>
-#include <tchar.h>
 NAN_METHOD(name) {
 	Nan::HandleScope scope;
 
+#ifdef _WIN32
 	TCHAR username[UNLEN+1];
 	ULONG size = sizeof(username);
 
 	if (GetUserNameEx(NameDisplay, username, &size) != 0) {
 		info.GetReturnValue().Set(Nan::New<String>((uint16_t*)username).ToLocalChecked());
-	} else {
-		info.GetReturnValue().Set(Nan::Null());
+		return;
 	}
-}
 #else
-#include <sys/types.h>
-#include <unistd.h>
-#include <pwd.h>
-NAN_METHOD(name) {
-	Nan::HandleScope scope;
-
 	struct passwd *pw = getpwuid(getuid());
 
 	if (pw != NULL && pw->pw_gecos != NULL && strlen(pw->pw_gecos) > 0) {
@@ -48,10 +47,10 @@ NAN_METHOD(name) {
 			return;
 		}
 	}
+#endif
 
 	info.GetReturnValue().Set(Nan::Null());
 }
-#endif
 
 void init(Handle<Object> exports, Handle<Object> module) {
 	Nan::SetMethod(module, "exports", name);
