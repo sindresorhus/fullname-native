@@ -1,9 +1,8 @@
 import test from 'ava';
-import x from './';
+import m from './';
 
 test(t => {
-	console.log('Fullname:', x);
-	t.is(typeof x, 'string');
-	t.true(x.length > 0);
-	t.end();
+	console.log('Fullname:', m);
+	t.is(typeof m, 'string');
+	t.true(m.length > 0);
 });
