@@ -1,4 +1,4 @@
-# fullname-native [![Build Status](https://travis-ci.org/sindresorhus/fullname-native.svg?branch=master)](https://travis-ci.org/sindresorhus/fullname-native)
+# fullname-native
 
 > Get the fullname of the current user
 
